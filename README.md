@@ -4,3 +4,15 @@ The Java language designers had their reasons for _not_ making `java.util.Option
 serializable; I just don't think those reasons are very good.
 
 This library mirrors the Java 25 `Optional` API but implements `Serializable`.
+
+```xml
+<dependency>
+    <groupId>com.voodoodyne</groupId>
+    <artifactId>serializable-optional</artifactId>
+    <version>1.0</version>
+</dependency>
+```
+
+```java
+import com.voodoodyne.opt.Optional;
+```
