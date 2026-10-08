@@ -61,6 +61,24 @@ public final class Optional<T> implements Serializable {
 		return value == null ? empty() : new Optional<>(value);
 	}
 
+	/// Converts a standard Java `Optional` to a serializable `Optional`.
+	///
+	/// @param optional the standard Java `Optional`
+	/// @param <T> the type of the value
+	/// @return a serializable `Optional` describing the same value
+	/// @throws NullPointerException if `optional` is null
+	public static <T> Optional<T> from(java.util.Optional<? extends T> optional) {
+		Objects.requireNonNull(optional);
+		return optional.isEmpty() ? empty() : of(optional.get());
+	}
+
+	/// Converts this instance to a standard Java `Optional`.
+	///
+	/// @return a standard Java `Optional` describing the same value
+	public java.util.Optional<T> toJdk() {
+		return java.util.Optional.ofNullable(value);
+	}
+
 	/// Returns the contained value.
 	///
 	/// @return the contained value

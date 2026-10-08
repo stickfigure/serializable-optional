@@ -40,6 +40,18 @@ class OptionalTest {
     }
 
     @Test
+    void convertsToAndFromJdkOptionals() {
+        java.util.Optional<Integer> jdkPresent = java.util.Optional.of(42);
+        Optional<Number> serializablePresent = Optional.from(jdkPresent);
+
+        assertEquals(Optional.of(42), serializablePresent);
+        assertEquals(jdkPresent, serializablePresent.toJdk());
+        assertSame(Optional.empty(), Optional.from(java.util.Optional.empty()));
+        assertEquals(java.util.Optional.empty(), Optional.empty().toJdk());
+        assertThrows(NullPointerException.class, () -> Optional.from(null));
+    }
+
+    @Test
     void runsPresenceSpecificActions() {
         AtomicReference<String> consumed = new AtomicReference<>();
         AtomicBoolean emptyActionRan = new AtomicBoolean();
