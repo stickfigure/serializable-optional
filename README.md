@@ -9,10 +9,15 @@ This library mirrors the Java 25 `Optional` API but implements `Serializable`.
 <dependency>
     <groupId>com.voodoodyne</groupId>
     <artifactId>serializable-optional</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
 ```java
 import com.voodoodyne.opt.Optional;
 ```
+
+## Changes
+
+* 2026-10-07 - 1.0.1
+    * Add a `toJdk()` method and a static `from()` method for easy conversion.
